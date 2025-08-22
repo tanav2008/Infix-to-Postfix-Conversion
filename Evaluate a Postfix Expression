@@ -1,0 +1,21 @@
+def evaluatePostfix(expression):
+    stack = []
+    for ch in expression:
+        if ch.isdigit():
+            stack.append(int(ch))
+        else:
+            val2 = stack.pop()
+            val1 = stack.pop()
+            if ch == '+':
+                stack.append(val1 + val2)
+            elif ch == '-':
+                stack.append(val1 - val2)
+            elif ch == '*':
+                stack.append(val1 * val2)
+            elif ch == '/':
+                stack.append(val1 // val2)
+    return stack.pop()
+
+expr = input("Enter a postfix expression: ")
+result = evaluatePostfix(expr)
+print("Result:", result)
